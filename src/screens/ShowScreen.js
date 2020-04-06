@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Context } from "../context/BlogContext";
 
-const ShowScreen = () => {
+const ShowScreen = ({ navigation }) => {
   const { state } = useContext(Context);
 
   // get the post to show from the state
@@ -17,7 +17,7 @@ const ShowScreen = () => {
   );
 };
 
-const styles = StylesSheet.create({
+const styles = StyleSheet.create({
   //styles
 });
 
