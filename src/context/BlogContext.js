@@ -2,6 +2,14 @@ import createDataContext from "./createDataContext";
 
 const blogReducer = (state, action) => {
   switch (action.type) {
+    case "EDIT_BLOGPOST":
+      return state.map(blogPost => {
+        if (blogPost.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return blogPost;
+        }
+      });
     case "DELETE_BLOGPOST":
       return state.filter(blogPost => blogPost.id !== action.payload);
     case "ADD_BLOGPOST":
