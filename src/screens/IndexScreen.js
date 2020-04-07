@@ -17,6 +17,16 @@ const IndexScreen = ({ navigation }) => {
 
   useEffect(() => {
     getBlogPosts();
+
+    // fetch post again when the scene receives focus
+    const listener = navigation.addListener("didFocus", () => {
+      getBlogPosts();
+    });
+
+    // cleanup - unsubscribe from the listener
+    return () => {
+      listener.remove();
+    };
     // empty array means the function will only be run
     // when the component first renders
   }, []);
