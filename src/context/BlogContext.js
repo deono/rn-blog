@@ -4,7 +4,7 @@ import jsonServer from "../api/jsonServer";
 const blogReducer = (state, action) => {
   switch (action.type) {
     case "GET_BLOGPOSTS":
-      return action.paylaod;
+      return action.payload;
     case "EDIT_BLOGPOST":
       return state.map(blogPost => {
         if (blogPost.id === action.payload.id) {
@@ -32,7 +32,6 @@ const blogReducer = (state, action) => {
 const getBlogPosts = dispatch => {
   return async () => {
     const response = await jsonServer.get("/blogposts");
-
     dispatch({ type: "GET_BLOGPOSTS", payload: response.data });
   };
 };
